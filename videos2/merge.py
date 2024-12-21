@@ -76,23 +76,26 @@ for subfolder_name in subfolders:
     except Exception as e:
         print("Error creating folder:", e)
 
-    scores_list = []
-    with open(os.path.join(INPUT_FOLDER, "scores.csv"), "r") as file:
-        reader = csv.reader(file)
-        scores_list = [(row[0], float(row[1]), float(row[2])) for row in reader] 
+    try: 
+        scores_list = []
+        with open(os.path.join(INPUT_FOLDER, "scores.csv"), "r") as file:
+            reader = csv.reader(file)
+            scores_list = [(row[0], float(row[1]), float(row[2])) for row in reader] 
 
-    count = (config.DISTILL_NUMBERS // (N * N)) * (N * N)
-    if len(scores_list) < count:
-        count = (len(scores_list) // (N * N)) * (N * N)
-    best_list = sorted(scores_list, key=lambda x: x[1], reverse=True)[:count]
-    best_list = sorted(best_list, key=lambda x: x[2])
-    print(best_list)
-    print(count,len(best_list))
+        count = (config.DISTILL_NUMBERS // (N * N)) * (N * N)
+        if len(scores_list) < count:
+            count = (len(scores_list) // (N * N)) * (N * N)
+        best_list = sorted(scores_list, key=lambda x: x[1], reverse=True)[:count]
+        best_list = sorted(best_list, key=lambda x: x[2])
+        print(best_list)
+        print(count,len(best_list))
 
-    count = 0
-    for i in range(0, len(best_list), MERGE_GROUP_SIZE):
-        group = best_list[i:i + MERGE_GROUP_SIZE]
-        video_paths = [os.path.join(INPUT_FOLDER, item[0]) for item in group]
-        output_path = os.path.join(OUTPUT_FOLDER, f"{count}.{config.OUTPUT_EXT}")
-        count = count + 1
-        combine_videos(video_paths, output_path)
+        count = 0
+        for i in range(0, len(best_list), MERGE_GROUP_SIZE):
+            group = best_list[i:i + MERGE_GROUP_SIZE]
+            video_paths = [os.path.join(INPUT_FOLDER, item[0]) for item in group]
+            output_path = os.path.join(OUTPUT_FOLDER, f"{count}.{config.OUTPUT_EXT}")
+            count = count + 1
+            combine_videos(video_paths, output_path)
+    except Exception as e:
+        print("Error merging cropped videos:", e)

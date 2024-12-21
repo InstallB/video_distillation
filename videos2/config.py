@@ -1,29 +1,29 @@
 import torch
 
-# N = 2 # each distilled video will contain N*N cropped videos
-# DISTILL_NUMBERS = 16 # you will get floor(DISTILL_NUMBERS/(N*N)) videos in total
+# N = 2
+# DISTILL_NUMBERS = 8
 # DISTILL_NUMBERS = (DISTILL_NUMBERS // (N * N)) * (N * N)
-# DISTILLED_FOLDER = "/userhome/jiangruohong/cv/UCF-101-Distilled/4_merged_videos_2x2"
+# DISTILLED_FOLDER = "/userhome/jiangruohong/cv/video_distillation/2_merged_videos_2x2"
+
+N = 2 # each distilled video will contain N*N cropped videos
+DISTILL_NUMBERS = 16 # you will get floor(DISTILL_NUMBERS/(N*N)) videos in total
+DISTILL_NUMBERS = (DISTILL_NUMBERS // (N * N)) * (N * N)
+DISTILLED_FOLDER = "/userhome/jiangruohong/cv/video_distillation/4_merged_videos_2x2"
 
 # N = 2
 # DISTILL_NUMBERS = 32
 # DISTILL_NUMBERS = (DISTILL_NUMBERS // (N * N)) * (N * N)
-# DISTILLED_FOLDER = "/userhome/jiangruohong/cv/UCF-101-Distilled/8_merged_videos_2x2"
-
-N = 2
-DISTILL_NUMBERS = 64
-DISTILL_NUMBERS = (DISTILL_NUMBERS // (N * N)) * (N * N)
-DISTILLED_FOLDER = "/userhome/jiangruohong/cv/UCF-101-Distilled/16_merged_videos_2x2"
+# DISTILLED_FOLDER = "/userhome/jiangruohong/cv/video_distillation/8_merged_videos_2x2"
 
 # N = 1
-# DISTILL_NUMBERS = 32
+# DISTILL_NUMBERS = 16
 # DISTILL_NUMBERS = (DISTILL_NUMBERS // (N * N)) * (N * N)
-# DISTILLED_FOLDER = "/userhome/jiangruohong/cv/UCF-101-Distilled/32_merged_videos_1x1"
+# DISTILLED_FOLDER = "/userhome/jiangruohong/cv/video_distillation/16_merged_videos_1x1"
 
 # N = 3
-# DISTILL_NUMBERS = 36
+# DISTILL_NUMBERS = 18
 # DISTILL_NUMBERS = (DISTILL_NUMBERS // (N * N)) * (N * N)
-# DISTILLED_FOLDER = "/userhome/jiangruohong/cv/UCF-101-Distilled/4_merged_videos_3x3"
+# DISTILLED_FOLDER = "/userhome/jiangruohong/cv/video_distillation/2_merged_videos_3x3"
 
 train_percentage = 0.6
 
